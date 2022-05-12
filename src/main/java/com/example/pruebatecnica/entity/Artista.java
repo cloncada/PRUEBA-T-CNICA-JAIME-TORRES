@@ -37,7 +37,7 @@ public class Artista implements Serializable {
    @JsonManagedReference
     @OneToMany(targetEntity = Obra.class)
 
-    private ArrayList<Obra> items;
+    private Set<Obra> items;
 
 
 

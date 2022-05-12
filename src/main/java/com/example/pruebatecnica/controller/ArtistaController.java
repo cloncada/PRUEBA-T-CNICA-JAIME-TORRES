@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class ArtistaController {
@@ -27,7 +28,8 @@ public class ArtistaController {
     @GetMapping("/obras/{id}")
     public List<Obra> getObrasByArtistaById(@PathVariable Long id) {
         Artista artistaa = artistaService.getArtistaById(id);
-        List<Obra> obras = artistaa.getItems();
+        Set<Obra> arr = artistaa.getItems();
+        List<Obra> obras = new ArrayList<>(arr);
         List<Obra> filtObras = new ArrayList<>();
         for (int i = 0; i < obras.size(); i++) {
             List<Museo> museos = obras.get(i).getMuseos();
